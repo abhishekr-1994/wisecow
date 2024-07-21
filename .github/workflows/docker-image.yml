@@ -7,7 +7,7 @@ on:
 
 env:
   REGISTRY: docker.io  # Replace with your container registry URL
-  IMAGE_NAME: wisecow  # Replace with your Docker image name
+  IMAGE_NAME: abhishekr94/wisecow  # Replace with your Docker image name
 
 jobs:
   build-and-deploy:
