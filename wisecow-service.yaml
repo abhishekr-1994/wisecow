@@ -1,0 +1,38 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: wisecow-deployment
+  labels:
+    app: wisecow
+spec:
+  replicas: 1  # Adjust as needed
+  selector:
+    matchLabels:
+      app: wisecow
+  template:
+    metadata:
+      labels:
+        app: wisecow
+    spec:
+      containers:
+        - name: wisecow
+          image: wisecow:v2  # Replace with your Docker image name
+          ports:
+            - containerPort: 4499
+          env:
+            - name: SRVPORT
+              value: "4499"
+          # Add other environment variables as needed
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: wisecow-service
+spec:
+  selector:
+    app: wisecow
+  ports:
+    - protocol: TCP
+      port: 4499
+      targetPort: 4499
+  type: ClusterIP
