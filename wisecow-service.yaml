@@ -5,7 +5,7 @@ metadata:
   labels:
     app: wisecow
 spec:
-  replicas: 1  # Adjust as needed
+  replicas: 1  
   selector:
     matchLabels:
       app: wisecow
@@ -16,13 +16,13 @@ spec:
     spec:
       containers:
         - name: wisecow
-          image: wisecow:v2  # Replace with your Docker image name
+          image: ***.dkr.ecr.us-east-1.amazonaws.com/wisecow  
           ports:
             - containerPort: 4499
           env:
             - name: SRVPORT
               value: "4499"
-          # Add other environment variables as needed
+         
 ---
 apiVersion: v1
 kind: Service
