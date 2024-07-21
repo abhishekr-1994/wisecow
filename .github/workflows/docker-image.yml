@@ -37,9 +37,10 @@ jobs:
       env:
         REGISTRY: ${{ steps.login-ecr.outputs.registry }}
         REPOSITORY: wisecow
+        GIT_SHA: ${{ github.sha}}
       run: |
-        docker build -t $REGISTRY/$REPOSITORY:${git_sha} .
-        docker push $REGISTRY/$REPOSITORY:${git_sha}
+        docker build -t $REGISTRY/$REPOSITORY:${GIT_SHA} .
+        docker push $REGISTRY/$REPOSITORY:${GIT_SHA}
 
     - name: Update kube config
       run: aws eks update-kubeconfig --name wisecow
